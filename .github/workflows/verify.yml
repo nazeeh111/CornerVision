@@ -50,7 +50,7 @@ jobs:
             mode = getenv('CORNERVISION_VERIFICATION');
             assert(any(strcmp(mode, {'smoke', 'candidate', 'localization'})), 'Unknown verification mode');
             run('tests/smoke_test.m');
-            if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end
+            if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end;
             if strcmp(mode, 'localization'), addpath('tests'); localization_full; end
 
       - name: Verify all 165 preserved source files after MATLAB
