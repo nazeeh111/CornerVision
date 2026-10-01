@@ -26,6 +26,8 @@ For the separate CPU resource check, run the workflow manually and select `candi
 
 This candidate check does not execute the 305-candidate localization search, reconstruct an image or establish position accuracy. It leaves the retained research functions and captures unchanged.
 
+For the complete CPU localization calculation, select `localization`. The collector runs the unchanged default `table_S1.m` mushroom script in a separate workspace and checks completion of all three stages. The preserved source prescribes 125, 90 and 90 candidates, 305 in total; the collector does not instrument the candidate count. It reports the final position, all three stage estimates and raw distances to the measured corner and the estimate reported in a source comment. These distances are observations, with no accuracy pass threshold. The calculation has a sixty-minute step limit and a seventy-five-minute job limit. Only a compact JSON summary is printed; the workflow does not upload captures, figures or MAT files. Full execution remains unverified until a successful manual run is recorded.
+
 ## Limits
 
 Full image reconstructions, occluder optimization, and figure replication were not run in the recorded geometry check. The image scripts allocate GPU arrays and need Parallel Computing Toolbox with a supported NVIDIA GPU. The total-variation solvers also call `nansum` from Statistics and Machine Learning Toolbox. The unchanged source configures capture paths for macOS and Windows, not Linux. Header validation does not establish every dataset variable is semantically valid.

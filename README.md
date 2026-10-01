@@ -24,7 +24,7 @@ Supplemental image experiments are fig_S1_S2.m, fig_S9.m, fig_S14.m, fig_S15.m a
 
 ## Verification
 
-Run `run('tests/smoke_test.m')` from the repository root. See [verification details](docs/VERIFICATION.md) for the tested scope and unavailable checks. Computational source and bundled scientific assets are retained byte-for-byte; the added facade and documentation provide the new presentation.
+Run `run('tests/smoke_test.m')` from the repository root. GitHub Actions also offers manual `candidate` and complete default `localization` CPU checks. See [verification details](docs/VERIFICATION.md) for their scope, runtime limits and execution status. Computational source and bundled scientific assets are retained byte-for-byte; the added facade and documentation provide the new presentation.
 
 ## License
 
