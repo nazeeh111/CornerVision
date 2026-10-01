@@ -6,8 +6,6 @@ Ordinary-camera computational periscopy: calibrated forward models, occluder loc
 
 Adapted from [Computational-Periscopy/Ordinary-Camera](https://github.com/Computational-Periscopy/Ordinary-Camera), the research code for [*Computational periscopy with an ordinary digital camera*](https://www.nature.com/articles/s41586-018-0868-6) by **Charles Saunders, John Murray-Bruce and Vivek K Goyal** (Nature, 2019). CornerVision adds a MATLAB entry point, analytical geometry checks, setup documentation and project presentation.
 
-> **Development history:** Developed locally using Git before publication. These projects were published to GitHub together, so similar upload dates do not indicate when development began.
-
 ## Quick start
 
 Open MATLAB in this repository, then use the branded entry point:
@@ -20,7 +18,9 @@ The entry point preserves the existing function's arguments, errors, and numeric
 
 ## Inputs and workflows
 
-For complete image reconstructions, start with fig4_column_c.m, fig4_column_d.m, or fig4_column_e.m. Supplemental experiments are fig_S1_S2.m, fig_S9.m, fig_S14.m, fig_S15.m, fig_S16.m and table_S1.m. Run from the repository root. Bundled Data measurements are retained. Full image workflows require Image Processing Toolbox; stack_combine uses nanmedian.
+For complete image reconstructions, start with fig4_column_c.m, fig4_column_d.m, or fig4_column_e.m. These scripts use GPU arrays and require Parallel Computing Toolbox with a supported NVIDIA GPU. The total-variation solvers also call the statistics function `nansum`. The unchanged data-path setup covers macOS and Windows; Linux paths are not configured.
+
+Supplemental image experiments are fig_S1_S2.m, fig_S9.m, fig_S14.m, fig_S15.m and fig_S16.m. They share the GPU requirement. The separate table_S1.m occluder-localization workflow uses CPU arrays; see [verification details](docs/VERIFICATION.md) for its tested scope. Run from the repository root. Bundled Data measurements are retained. The optional stack_combine helper uses the statistics function nanmedian.
 
 ## Verification
 

@@ -1,0 +1,55 @@
+name: Verify CornerVision
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      verification:
+        description: 'Smoke, or smoke plus one measured-corner CPU candidate (no full search)'
+        type: choice
+        default: smoke
+        options:
+          - smoke
+          - candidate
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    # Standard hosted VM and finite timeouts bound resource use. These are
+    # not an instantaneous RSS cap or proof of process-group cleanup.
+    runs-on: macos-latest
+    timeout-minutes: 15
+    env:
+      CORNERVISION_VERIFICATION: ${{ inputs.verification || 'smoke' }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+
+      - name: Verify all 165 preserved source files before MATLAB
+        run: python3 tests/check_source_manifest.py
+
+      - name: Set up base MATLAB R2026a
+        uses: matlab-actions/setup-matlab@f9e43010f1ae678f7cfa0542fe2a4f60f7d1ad8d
+        with:
+          release: R2026a
+
+      - name: Run smoke and optional single CPU candidate
+        timeout-minutes: 5
+        uses: matlab-actions/run-command@bfa857648f4895aa98a446fe41c85e0788421ed5
+        with:
+          startup-options: -singleCompThread
+          generate-summary: false
+          command: >-
+            mode = getenv('CORNERVISION_VERIFICATION');
+            assert(any(strcmp(mode, {'smoke', 'candidate'})), 'Unknown verification mode');
+            run('tests/smoke_test.m');
+            if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end
+
+      - name: Verify all 165 preserved source files after MATLAB
+        if: always()
+        run: python3 tests/check_source_manifest.py
