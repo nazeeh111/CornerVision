@@ -1,20 +1,18 @@
-![CornerVision](docs/banner.svg)
-
 # CornerVision
 
-Ordinary-camera computational periscopy: calibrated forward models, occluder localization, and hidden-scene reconstruction.
+MATLAB code and bundled measurements for [*Computational periscopy with an ordinary digital camera*](https://www.nature.com/articles/s41586-018-0868-6), by Charles Saunders, John Murray-Bruce and Vivek K Goyal (Nature, 2019).
 
-Adapted from [Computational-Periscopy/Ordinary-Camera](https://github.com/Computational-Periscopy/Ordinary-Camera), the research code for [*Computational periscopy with an ordinary digital camera*](https://www.nature.com/articles/s41586-018-0868-6) by **Charles Saunders, John Murray-Bruce and Vivek K Goyal** (Nature, 2019). CornerVision adds a MATLAB entry point, analytical geometry checks, setup documentation and project presentation.
+This repository preserves the [authors' computational source and data](https://github.com/Computational-Periscopy/Ordinary-Camera) and adds setup documentation, verification checks and a `corner_vision` alias for the ray–plane intersection helper. The reconstruction and occluder-localization workflows remain the original MATLAB scripts.
 
-## Quick start
+## Geometry helper
 
-Open MATLAB in this repository, then use the branded entry point:
+For the ray–plane intersection helper, run from the repository root:
 
 ```matlab
 point = corner_vision([0 0 0], [1 2 3], [0 1 0], [0 1 0]);
 ```
 
-The entry point preserves the existing function's arguments, errors, and numerical output. Existing script and function names remain available for compatibility. No sensor starts when you open this repository.
+This computes a geometry point; it does not reconstruct an image. The alias preserves the original helper's arguments, errors and output.
 
 ## Inputs and workflows
 
@@ -24,7 +22,7 @@ Supplemental image experiments are fig_S1_S2.m, fig_S9.m, fig_S14.m, fig_S15.m a
 
 ## Verification
 
-Run `run('tests/smoke_test.m')` from the repository root. GitHub Actions also offers manual `candidate` and complete default `localization` CPU checks. See [verification details](docs/VERIFICATION.md) for their scope, runtime limits and execution status. Computational source and bundled scientific assets are retained byte-for-byte; the added facade and documentation provide the new presentation.
+Run `run('tests/smoke_test.m')` from the repository root. GitHub Actions also offers manual `candidate` and complete default `localization` CPU checks. See [verification details](docs/VERIFICATION.md) for their scope, runtime limits and execution status. The original computational source and bundled measurements are retained byte-for-byte.
 
 ## License
 
