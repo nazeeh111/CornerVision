@@ -6,12 +6,13 @@ on:
   workflow_dispatch:
     inputs:
       verification:
-        description: 'Smoke, or smoke plus one measured-corner CPU candidate (no full search)'
+        description: 'Smoke; one CPU candidate; or full original default mushroom localization'
         type: choice
         default: smoke
         options:
           - smoke
           - candidate
+          - localization
 
 permissions:
   contents: read
@@ -21,7 +22,7 @@ jobs:
     # Standard hosted VM and finite timeouts bound resource use. These are
     # not an instantaneous RSS cap or proof of process-group cleanup.
     runs-on: macos-latest
-    timeout-minutes: 15
+    timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.verification == 'localization' && 75 || 15 }}
     env:
       CORNERVISION_VERIFICATION: ${{ inputs.verification || 'smoke' }}
     steps:
@@ -38,17 +39,19 @@ jobs:
         with:
           release: R2026a
 
-      - name: Run smoke and optional single CPU candidate
-        timeout-minutes: 5
+      - name: Run smoke and selected manual calculation
+        # Full localization has a conservative finite cutoff, not an ETA.
+        timeout-minutes: ${{ github.event_name == 'workflow_dispatch' && inputs.verification == 'localization' && 60 || 5 }}
         uses: matlab-actions/run-command@bfa857648f4895aa98a446fe41c85e0788421ed5
         with:
           startup-options: -singleCompThread
           generate-summary: false
           command: >-
             mode = getenv('CORNERVISION_VERIFICATION');
-            assert(any(strcmp(mode, {'smoke', 'candidate'})), 'Unknown verification mode');
+            assert(any(strcmp(mode, {'smoke', 'candidate', 'localization'})), 'Unknown verification mode');
             run('tests/smoke_test.m');
-            if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end
+            if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end;
+            if strcmp(mode, 'localization'), addpath('tests'); localization_full; end
 
       - name: Verify all 165 preserved source files after MATLAB
         if: always()
