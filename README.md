@@ -4,6 +4,8 @@
 
 Ordinary-camera computational periscopy: calibrated forward models, occluder localization, and hidden-scene reconstruction.
 
+Adapted from [Computational-Periscopy/Ordinary-Camera](https://github.com/Computational-Periscopy/Ordinary-Camera), the research code for [*Computational periscopy with an ordinary digital camera*](https://www.nature.com/articles/s41586-018-0868-6) by **Charles Saunders, John Murray-Bruce and Vivek K Goyal** (Nature, 2019). CornerVision adds a MATLAB entry point, analytical geometry checks, setup documentation and project presentation.
+
 > **Development history:** Developed locally using Git before publication. These projects were published to GitHub together, so similar upload dates do not indicate when development began.
 
 ## Quick start
@@ -26,4 +28,4 @@ Run `run('tests/smoke_test.m')` from the repository root. See [verification deta
 
 ## License
 
-MIT covers the authorized first-party code and new presentation. Separately owned notices embedded in source remain applicable.
+MIT covers CornerVision's added entry point, tests, documentation and artwork. It does not relicense the original research code or measurement data; see [NOTICE](NOTICE) for source attribution and scope.

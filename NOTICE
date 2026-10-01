@@ -1,0 +1,22 @@
+Original research source and measurements
+=========================================
+
+Computational Periscopy with an Ordinary Digital Camera
+Charles Saunders, John Murray-Bruce and Vivek K Goyal
+Nature 565, 472–475 (2019), DOI: 10.1038/s41586-018-0868-6
+
+Original repository:
+https://github.com/Computational-Periscopy/Ordinary-Camera
+Verified source version: 6b088a3abff8a5854bbd1419e8f05727f487a94e
+Authors' project page:
+https://www.vivekgoyal.org/computational-periscopy.htm
+
+CornerVision retains 165 original computational and data files with identical
+Git blob identities. The original author headers remain in those files.
+This adaptation adds corner_vision.m, geometry smoke checks, documentation
+and artwork; it does not claim authorship of the original research algorithm
+or measurements.
+
+No upstream license file is present at the verified source version. The MIT
+license in this repository covers only the added CornerVision material and
+does not grant an additional license for the original research files.
