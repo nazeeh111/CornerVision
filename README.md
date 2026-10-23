@@ -10,10 +10,13 @@ Recover a hidden scene from calibrated camera measurements using a light-transpo
 
 The retained default mushroom experiment estimates the **occluder's corner position**, a separate task from recovering a scene image. A [recorded hosted run](https://github.com/nazeeh111/CornerVision/actions/runs/36885002157) completed all three localization stages on 1 October 2026 using base MATLAB:
 
-| Manuscript coordinates, meters | x | y | z |
-| --- | --- | --- | --- |
-| Executed corner estimate | 0.458333 | 0.489195 | 0.202586 |
-| Original measured corner | 0.470000 | 0.460000 | 0.204000 |
+Manuscript coordinates, in meters:
+
+| Axis | Executed estimate | Measured corner |
+| --- | --- | --- |
+| x | 0.458333 | 0.470000 |
+| y | 0.489195 | 0.460000 |
+| z | 0.202586 | 0.204000 |
 
 The estimate is **31.471915 mm** from the measured corner. This is a recorded raw comparison with no accuracy pass threshold, not a fresh run or an image reconstruction. [Full result, runtime, source revision and coordinate convention](docs/LOCALIZATION_RESULT.md).
 
