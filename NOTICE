@@ -11,8 +11,12 @@ Verified source version: 6b088a3abff8a5854bbd1419e8f05727f487a94e
 Authors' project page:
 https://www.vivekgoyal.org/computational-periscopy.htm
 
-CornerVision retains 165 original computational and data files with identical
-Git blob identities. The original author headers remain in those files.
+The original 165-file computational/data snapshot is retained as historical
+evidence in docs/SOURCE-MANIFEST.json. Current source preserves 163 files
+byte for byte and intentionally modifies 2 TV solver files. The original and
+current SHA-256 values and exact correction scope are disclosed in
+docs/SOURCE-MODIFICATIONS.json. This is not a refreshed upstream identity.
+The original author headers remain in those files.
 This adaptation adds corner_vision.m, geometry smoke checks, documentation
 and artwork; it does not claim authorship of the original research algorithm
 or measurements.

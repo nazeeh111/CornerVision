@@ -34,7 +34,7 @@ function [reconstruction] = reconstruct_tv_it_cbg(A,cscale, measurement, reg, Nu
 
     %%
     % TV Parameters
-    tvparams.constraints = 'none';
+    tvparams.constraint = 'none';
 
     % Cost function (g(x) + h(x)), gradient (dg(x)) and proximal operator
     grad = @(x,constants) rs((-constants.ATm + constants.ATA*x(:))); 
@@ -102,12 +102,12 @@ function [solution] = co_prox_tv(input, lambda, params)
 
 %% Optional inputs
 if nargin==2
-    params.tvtol = 1e-6;
+    params.tol = 1e-6;
     params.constraint = 'none';
     params.usegpu = 0;
 else
     if ~isfield(params, 'tol')
-        params.tvtol = 1e-6;
+        params.tol = 1e-6;
     end
 
     if ~isfield(params, 'constraint')
@@ -216,9 +216,14 @@ while(1)
     %% Stopping crit
     tmp = (b-sol).^2;
     cur_val = .5*nansum(tmp(:)) +   lambda .* nansum(sqrt(tmpr(:).^2 + tmps(:).^2));
-    rel_obj = abs(cur_val-old_val)/cur_val;
+    % A finite zero-cost fixed point has zero objective change, not 0/0.
+    if cur_val == 0 && old_val == 0 && all(isfinite(sol(:)))
+        rel_obj = 0;
+    else
+        rel_obj = abs(cur_val-old_val)/cur_val;
+    end
 
-    if rel_obj<params.tvtol
+    if rel_obj<params.tol
         break;
     end
 

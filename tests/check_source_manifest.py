@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the preserved source files without updating their manifest."""
+"""Verify historical source identity and the two explicit derivative corrections."""
 
 import hashlib
 import json
@@ -10,6 +10,8 @@ import sys
 
 MANIFEST_SHA256 = "93171ed8d2ae6e742d1c1d0f2aecbe50b58741a3f8fd0b03f0b11fb23e3093db"
 SOURCE_FILE_COUNT = 165
+MODIFIED_SOURCE_COUNT = 2
+MODIFICATIONS_SHA256 = "018b952b5a8c72b6adff109b45ff18e4ccf7133ce17c79b29aa6c9a097ffcbec"
 
 
 def unique_entries(pairs):
@@ -30,6 +32,24 @@ def main():
     entries = json.loads(manifest_bytes, object_pairs_hook=unique_entries)
     if not isinstance(entries, dict) or len(entries) != SOURCE_FILE_COUNT:
         raise ValueError(f"Expected exactly {SOURCE_FILE_COUNT} source files")
+    modifications_bytes = (root / "docs" / "SOURCE-MODIFICATIONS.json").read_bytes()
+    if hashlib.sha256(modifications_bytes).hexdigest() != MODIFICATIONS_SHA256:
+        raise ValueError("The derivative source modification record has changed")
+    record = json.loads(modifications_bytes, object_pairs_hook=unique_entries)
+    if not isinstance(record, dict) or record.get("original_manifest_sha256") != MANIFEST_SHA256:
+        raise ValueError("Modification record must reference the original historical manifest")
+    modifications = record.get("modified_sources")
+    if not isinstance(modifications, dict) or len(modifications) != MODIFIED_SOURCE_COUNT:
+        raise ValueError(f"Expected exactly {MODIFIED_SOURCE_COUNT} modified source files")
+    for name, modification in modifications.items():
+        if not isinstance(modification, dict) or modification.get("original_sha256") != entries.get(name):
+            raise ValueError(f"Modified source original identity mismatch: {name}")
+        current = modification.get("current_sha256")
+        if not isinstance(current, str) or not re.fullmatch(r"[0-9a-f]{64}", current):
+            raise ValueError(f"Invalid current SHA-256 for: {name}")
+        if name not in entries or current == entries[name]:
+            raise ValueError(f"Modified source must differ from a recorded original file: {name}")
+
     failures = []
     for name, expected in entries.items():
         relative = PurePosixPath(name)
@@ -42,12 +62,16 @@ def main():
             failures.append(f"Missing or outside repository: {name}")
             continue
         actual = hashlib.sha256(source.read_bytes()).hexdigest()
-        if actual != expected:
+        current_expected = modifications[name]["current_sha256"] if name in modifications else expected
+        if actual != current_expected:
             failures.append(f"SHA-256 mismatch: {name}")
     if failures:
         raise ValueError("\n".join(failures))
     print(json.dumps({"status": "pass", "source_files_verified": len(entries),
-                      "manifest_sha256": manifest_digest}, sort_keys=True))
+                      "historical_source_files_unchanged": len(entries) - len(modifications),
+                      "intentionally_modified_source_files": len(modifications),
+                      "manifest_sha256": manifest_digest,
+                      "modifications_sha256": MODIFICATIONS_SHA256}, sort_keys=True))
 
 
 if __name__ == "__main__":

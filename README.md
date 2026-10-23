@@ -2,7 +2,7 @@
 
 **Computational periscopy with an ordinary digital camera.**
 
-Recover a hidden scene from calibrated camera measurements using a light-transport model and image reconstruction. CornerVision preserves the MATLAB source and bundled measurements for Saunders, Murray-Bruce and Goyal's [Nature 2019 research](https://www.nature.com/articles/s41586-018-0868-6). This edition adds setup guidance, verification checks and a small geometry-helper alias; the research algorithms remain the authors' work.
+Recover a hidden scene from calibrated camera measurements using a light-transport model and image reconstruction. CornerVision retains the MATLAB source and bundled measurements for Saunders, Murray-Bruce and Goyal's [Nature 2019 research](https://www.nature.com/articles/s41586-018-0868-6), with two disclosed TV solver corrections. This edition adds setup guidance, verification checks and a small geometry-helper alias; the research algorithms remain the authors' work.
 
 [Start without a GPU](#start-without-a-gpu) · [Read a recorded result](#a-recorded-cpu-result) · [Choose an image workflow](#inputs-and-workflows) · [Source and license](#license)
 
@@ -28,7 +28,7 @@ For a source-preservation check with Python 3 only, run from the repository root
 python3 tests/check_source_manifest.py
 ```
 
-This checks the fixed manifest and hashes of **165 retained source/data files**. It does not execute MATLAB or validate a reconstruction.
+This checks the unchanged historical manifest, **163 unchanged original source/data files**, and **2 intentionally modified TV solver files** against a separately pinned [modification record](docs/SOURCE-MODIFICATIONS.json). It does not execute MATLAB or validate a reconstruction. [Correction scope and limits](docs/VERIFICATION.md#tv-solver-corrections-2026-10-23).
 
 For the small offline MATLAB check, open MATLAB in the repository root and run:
 

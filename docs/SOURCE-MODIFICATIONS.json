@@ -1,0 +1,19 @@
+{
+  "upstream_revision": "6b088a3abff8a5854bbd1419e8f05727f487a94e",
+  "repository_baseline": "039a01131ab8420b3633c0258aa1f9cc5217f6f9",
+  "original_manifest_sha256": "93171ed8d2ae6e742d1c1d0f2aecbe50b58741a3f8fd0b03f0b11fb23e3093db",
+  "proposal_sha256": "2c272b8ac67353d39e5fa8b516ee57e638eaf50fcac95a28376727f5b0bae8ff",
+  "scope": "Current derivative source, not a refreshed upstream identity. The original 165-file SOURCE-MANIFEST.json is historical and unchanged; 163 files retain original hashes and these 2 have explicit corrections. No research-result parity or global convergence claim.",
+  "modified_sources": {
+    "Functions/reconstruct_tv.m": {
+      "original_sha256": "2b6d12eecceea7c7552ac0a5df5001f95cf2d3712f1a105ae4676d5eacaacf75",
+      "current_sha256": "e46caf27a4ce5a76079b2df01c3f4d4e061aedee2197a585cef3c4e64061de89",
+      "scope": "Recognize a finite zero-cost fixed point as zero relative objective change; all other objective division and fixed-iteration behavior preserved."
+    },
+    "Functions/reconstruct_tv_it_cbg.m": {
+      "original_sha256": "3b337b6566e5030a59b40ce10673d1bbd52e8af0327a6c2db63e5ce7111bf019",
+      "current_sha256": "4ff0b7f19d11690a97adc70f71dab2516038a428f15a5a477d82fed8da6040ff",
+      "scope": "Finite zero-cost fixed-point stopping only; documented tolerance/constraint field spelling also corrected in iterative helper."
+    }
+  }
+}

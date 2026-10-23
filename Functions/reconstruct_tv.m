@@ -169,7 +169,12 @@ while(1)
     %% Stopping crit
     tmp = (b-sol).^2;
     cur_val = .5*nansum(tmp(:)) +   lambda .* nansum(sqrt(tmpr(:).^2 + tmps(:).^2));
-    rel_obj = abs(cur_val-old_val)/cur_val;
+    % A finite zero-cost fixed point has zero objective change, not 0/0.
+    if cur_val == 0 && old_val == 0 && all(isfinite(sol(:)))
+        rel_obj = 0;
+    else
+        rel_obj = abs(cur_val-old_val)/cur_val;
+    end
 
     if rel_obj<params.tol
         break;
