@@ -2,7 +2,7 @@
 
 **Computational periscopy with an ordinary digital camera.**
 
-Recover a hidden scene from calibrated camera measurements using a light-transport model and image reconstruction. CornerVision retains the MATLAB source and bundled measurements for Saunders, Murray-Bruce and Goyal's [Nature 2019 research](https://www.nature.com/articles/s41586-018-0868-6), with two disclosed TV solver corrections. This edition adds setup guidance, verification checks and a small geometry-helper alias; the research algorithms remain the authors' work.
+Recover a hidden scene from calibrated camera measurements using a light-transport model and image reconstruction. Explore the MATLAB source, bundled measurements and geometry helper; the [verification guide](docs/VERIFICATION.md) discloses two TV solver corrections.
 
 [Start without a GPU](#start-without-a-gpu) · [Read a recorded result](#a-recorded-cpu-result) · [Choose an image workflow](#inputs-and-workflows) · [Source and license](#license)
 
@@ -81,6 +81,6 @@ If an image script fails at `gpuArray`, use the no-GPU entry paths above or a su
 
 ## License
 
-Charles Saunders, John Murray-Bruce and Vivek K Goyal. *Computational periscopy with an ordinary digital camera*. Nature 565, 472–475 (2019). [Authors' source](https://github.com/Computational-Periscopy/Ordinary-Camera) · [Project page](https://www.vivekgoyal.org/computational-periscopy.htm) · [Attribution and scope](NOTICE).
+[Source provenance and scope](NOTICE).
 
 MIT covers CornerVision's added entry point, tests, documentation and artwork only. No upstream license file was present at the verified source revision; this repository's MIT terms do not grant an additional license for the original research code or measurements.
