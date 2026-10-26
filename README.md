@@ -20,6 +20,17 @@ Manuscript coordinates, in meters:
 
 The estimate is **31.471915 mm** from the measured corner. This is a recorded raw comparison with no accuracy pass threshold, not a fresh run or an image reconstruction. [Full result, runtime, source revision and coordinate convention](docs/LOCALIZATION_RESULT.md).
 
+### How localization works
+
+The recorded result above comes from the occluder-position search below. It estimates a corner position; it does not recover a scene image.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/figures/localization-method-portrait.svg">
+  <img src="docs/figures/localization-method.svg" alt="CornerVision’s three-stage occluder localization: the documented search schedule selects candidate corner positions; each candidate drives the camera forward model and retained SVD modes. RGB measurements and candidate-derived modes feed per-channel projection scores. The per-channel best positions are averaged and y is converted to manuscript coordinates. The recorded comparison is not an image reconstruction." width="100%">
+</picture>
+
+The recorded estimate is compared with the measured corner in manuscript coordinates. The stages follow the default mushroom settings in [`table_S1.m`](table_S1.m); candidate scoring follows [`occluderposgridsearch.m`](Functions/occluderposgridsearch.m). Diagram element sources are listed in [`LOCALIZATION-FIGURE-SOURCES.md`](docs/LOCALIZATION-FIGURE-SOURCES.md).
+
 ## Start without a GPU
 
 For a source-preservation check with Python 3 only, run from the repository root:

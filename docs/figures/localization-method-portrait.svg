@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="2240" viewBox="0 0 980 2240" role="img" aria-labelledby="title desc">
+<title id="title">CornerVision occluder localization, portrait layout</title>
+<desc id="desc">Portrait diagram of the default mushroom occluder-position search. The schedule selects corner candidates for the forward model. Measured RGB camera channels and retained model modes enter the score. Per-channel best positions are averaged; y is converted to manuscript coordinates. The final panel is the recorded CPU comparison, not a reconstruction.</desc>
+<defs>
+  <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0 0L12 6L0 12z" fill="#7592a8"/></marker>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#e9f1f5}.muted{fill:#a9bdc8}.small{font-size:30px}.body{font-size:36px}.label{font-size:25px;font-weight:700;letter-spacing:2px}.head{font-size:43px;font-weight:700}.line{stroke:#7592a8;stroke-width:3;fill:none;marker-end:url(#arrow)}.card{fill:#102238;stroke:#31516a;stroke-width:2}.soft{fill:#142c40}.teal{fill:#53dec7}.red{fill:#ff8175}.green{fill:#83dda5}.blue{fill:#79baff}
+  </style>
+</defs>
+<rect width="980" height="2240" rx="26" fill="#081526"/>
+<g id="header">
+ <text x="56" y="76" class="label teal">CORNER VISION / DEFAULT MUSHROOM</text>
+ <text x="56" y="142" font-size="52" font-weight="700">Find the occluder corner</text>
+ <text x="56" y="190" class="body muted">RGB measurement → candidate position search</text>
+</g>
+<g id="measurement">
+ <rect x="56" y="230" width="868" height="164" rx="18" class="card"/>
+ <text x="86" y="274" class="label teal">MEASURED CAMERA INPUT</text>
+ <text x="86" y="340" class="body"><tspan class="red">R</tspan><tspan>  red array</tspan><tspan dx="42" class="green">G</tspan><tspan>  green array</tspan><tspan dx="42" class="blue">B</tspan><tspan>  blue array</tspan></text>
+</g>
+<g id="stage-schedule">
+ <rect x="56" y="438" width="868" height="270" rx="18" class="card"/>
+ <text x="86" y="483" class="label teal">SEARCH SCHEDULE · table_S1.m</text>
+ <line x1="482" y1="506" x2="482" y2="684" stroke="#31516a" stroke-width="2"/>
+ <text x="86" y="544" class="label">1 · GLOBAL GRID</text>
+ <text x="86" y="604" class="head">5 × 5 × 5</text>
+ <text x="86" y="653" class="small muted">125 candidate corners</text>
+ <text x="520" y="544" class="label">2 · REFINE × 2</text>
+ <text x="520" y="604" class="head">x → z → y</text>
+ <text x="520" y="653" class="small muted">30 per axis · 90 each round</text>
+ <text x="520" y="690" class="small teal" style="font-size:26px">305 total by source schedule</text>
+</g>
+<path id="schedule-to-candidate" d="M490 708V744" class="line"/>
+<g id="candidate">
+ <rect x="180" y="752" width="620" height="112" rx="18" fill="#17354a" stroke="#53dec7" stroke-width="2"/>
+ <text x="220" y="797" class="label teal">SCHEDULE SELECTS pₒ</text>
+ <text x="220" y="842" class="head">Corner pₒ</text>
+</g>
+<path id="candidate-to-forward-model" d="M490 864V900" class="line"/>
+<g id="forward-model">
+ <rect x="180" y="908" width="620" height="118" rx="18" class="card"/>
+ <text x="220" y="953" class="label teal">FOR EACH pₒ</text>
+ <text x="220" y="1007" class="head">Simulate A(pₒ)</text>
+</g>
+<path id="forward-model-to-svd" d="M490 1026V1062" class="line"/>
+<g id="svd-modes">
+ <rect x="180" y="1070" width="620" height="120" rx="18" class="card"/>
+ <text x="220" y="1116" class="label teal">ABOVE THRESHOLD · CAP 10</text>
+ <text x="220" y="1170" class="head">Economical SVD</text>
+</g>
+<path id="svd-to-score" d="M490 1190V1226" class="line"/>
+<path id="measurement-to-score" d="M56 312H28V1326H178" class="line"/>
+<text x="44" y="1210" class="small muted">RGB input</text>
+<g id="projection-score">
+ <rect x="180" y="1234" width="620" height="240" rx="18" fill="#102238" stroke="#53dec7" stroke-width="2"/>
+ <text x="220" y="1280" class="label teal">SCORE THE MEASURED CHANNELS</text>
+ <text x="220" y="1335" class="body"><tspan class="red">R</tspan><tspan> · projection norm</tspan></text>
+ <text x="220" y="1390" class="body"><tspan class="green">G</tspan><tspan> · projection norm</tspan></text>
+ <text x="220" y="1445" class="body"><tspan class="blue">B</tspan><tspan> · projection norm</tspan></text>
+</g>
+<path id="score-to-channel-maxima" d="M490 1474V1504" class="line"/>
+<g id="channel-maxima">
+ <rect x="180" y="1512" width="620" height="112" rx="18" class="card"/>
+ <text x="220" y="1556" class="label teal">BEST CANDIDATE PER CHANNEL</text>
+ <text x="220" y="1602" class="body"><tspan class="red">pᵣ</tspan><tspan>  ·  </tspan><tspan class="green">pᵍ</tspan><tspan>  ·  </tspan><tspan class="blue">pᵦ</tspan></text>
+</g>
+<path id="maxima-to-mean" d="M490 1624V1654" class="line"/>
+<g id="channel-mean">
+ <rect x="180" y="1662" width="620" height="104" rx="18" fill="#103b42" stroke="#53dec7" stroke-width="2"/>
+ <text x="220" y="1705" class="label teal">AVERAGE THE THREE POSITIONS</text>
+ <text x="220" y="1749" class="head">p̂ = mean(pᵣ, pᵍ, pᵦ)</text>
+</g>
+<path id="mean-to-coordinate" d="M490 1766V1802" class="line"/>
+<g id="coordinate-conversion">
+ <rect x="180" y="1810" width="620" height="144" rx="18" class="card"/>
+ <text x="220" y="1850" class="label teal">REFERENCE CONVERSION</text>
+ <text x="220" y="1900" class="body">Manuscript y = D − y internal</text>
+ <text x="220" y="1940" class="small muted">D = 1.03 m</text>
+</g>
+<path id="coordinate-to-result" d="M490 1954V1984" class="line"/>
+<g id="recorded-result">
+ <rect x="56" y="1988" width="868" height="230" rx="18" fill="#0f202e" stroke="#52718a" stroke-width="2"/>
+ <text x="82" y="2030" class="label teal">RECORDED CPU RESULT · NOT A RECONSTRUCTION</text>
+ <text x="82" y="2074" class="small">Estimate (0.458333, 0.489195, 0.202586) m</text>
+ <text x="82" y="2116" class="small">Measured (0.470000, 0.460000, 0.204000) m</text>
+ <text x="82" y="2158" class="small teal">31.471915 mm raw distance · no accuracy pass threshold</text>
+ <text x="82" y="2198" class="small muted" style="font-size:24px">Recorded run; no reconstruction; candidate call count not instrumented.</text>
+</g>
+</svg>

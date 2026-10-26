@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="850" viewBox="0 0 1400 850" role="img" aria-labelledby="title desc">
+<title id="title">CornerVision occluder localization</title>
+<desc id="desc">Three-stage search for an occluder corner. Each candidate position defines a simulated forward matrix. Its retained left singular modes score the projection of red, green and blue measurements. Each channel selects its best candidate; the three positions are averaged and y is converted to manuscript coordinates. The diagram includes a recorded comparison, not an image reconstruction.</desc>
+<defs>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#7592a8"/></marker>
+  <linearGradient id="hero" x1="0" x2="1"><stop stop-color="#102238"/><stop offset="1" stop-color="#17354a"/></linearGradient>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#e9f1f5}.muted{fill:#a9bdc8}.small{font-size:16px}.body{font-size:18px}.label{font-size:14px;font-weight:700;letter-spacing:1.5px}.head{font-size:25px;font-weight:700}.line{stroke:#7592a8;stroke-width:2;fill:none;marker-end:url(#arrow)}.card{fill:#102238;stroke:#31516a;stroke-width:1.5}.soft{fill:#142c40}.teal{fill:#53dec7}.red{fill:#ff8175}.green{fill:#83dda5}.blue{fill:#79baff}
+  </style>
+</defs>
+<rect width="1400" height="850" rx="22" fill="#081526"/>
+<g id="header">
+  <text x="56" y="58" class="label teal">CORNER VISION / DEFAULT MUSHROOM LOCALIZATION</text>
+  <text x="56" y="103" font-size="36" font-weight="700">Find the occluder corner from one RGB measurement</text>
+  <text x="58" y="133" class="body muted">A position search using the camera forward model. The target here is geometry, not a hidden-scene image.</text>
+</g>
+<g id="measurement">
+  <rect x="56" y="170" width="225" height="178" rx="16" class="card"/>
+  <text x="78" y="202" class="label teal">INPUT</text>
+  <text x="78" y="235" class="head">One capture</text>
+  <g transform="translate(84 255)">
+    <rect width="42" height="48" rx="6" fill="#1a3043"/><path d="M8 38L18 25l8 8 7-12 7 17z" class="red" opacity=".88"/>
+    <rect x="53" width="42" height="48" rx="6" fill="#1a3043"/><path d="M61 38L71 25l8 8 7-12 7 17z" class="green" opacity=".88"/>
+    <rect x="106" width="42" height="48" rx="6" fill="#1a3043"/><path d="M114 38L124 25l8 8 7-12 7 17z" class="blue" opacity=".88"/>
+  </g>
+  <text x="78" y="328" class="small muted">Measured r, g, b arrays</text>
+</g>
+
+<g id="search-core">
+  <rect x="320" y="170" width="680" height="178" rx="16" fill="url(#hero)" stroke="#53dec7" stroke-width="1.5"/>
+  <text x="346" y="202" class="label teal">FOR EACH CANDIDATE CORNER pₒ</text>
+  <g id="candidate">
+    <circle cx="390" cy="272" r="34" fill="#21485a" stroke="#53dec7" stroke-width="2"/>
+    <path d="M371 280l19-21 17 14" stroke="#53dec7" stroke-width="3" fill="none"/>
+    <circle cx="390" cy="259" r="4" class="teal"/>
+    <text x="390" y="327" class="small" text-anchor="middle">position</text>
+  </g>
+  <path d="M430 270H474" class="line"/>
+  <g id="forward-model">
+    <rect x="478" y="228" width="170" height="82" rx="12" class="soft" stroke="#31516a"/>
+    <text x="563" y="258" class="body" text-anchor="middle">Simulate A(pₒ)</text>
+    <text x="563" y="286" class="small muted" text-anchor="middle">camera forward model</text>
+  </g>
+  <path d="M650 270H694" class="line"/>
+  <g id="svd-modes">
+    <rect x="698" y="218" width="270" height="102" rx="12" class="soft" stroke="#31516a"/>
+    <text x="833" y="250" class="body" text-anchor="middle">Economical SVD of A</text>
+    <text x="833" y="278" class="small muted" text-anchor="middle">normalize singular values</text>
+    <text x="833" y="302" class="small teal" text-anchor="middle">retain thresholded modes (cap 10)</text>
+  </g>
+</g>
+<path id="retained-modes-to-score" d="M833 322V360H840V382" class="line"/>
+<g id="projection-score">
+  <rect x="682" y="382" width="318" height="146" rx="16" class="card"/>
+  <text x="706" y="414" class="label teal">SCORE EACH CHANNEL</text>
+  <text x="706" y="450" class="small">projection norm of yᵣ  <tspan class="red">R</tspan></text>
+  <text x="706" y="480" class="small">projection norm of yᵍ  <tspan class="green">G</tspan></text>
+  <text x="706" y="510" class="small">projection norm of yᵦ  <tspan class="blue">B</tspan></text>
+</g>
+<path id="measurement-to-score" d="M281 305H300V360H660V368H700V382" class="line"/>
+<path id="score-to-max" d="M1002 455H1034" class="line"/>
+<g id="channel-maxima">
+  <rect x="1040" y="382" width="304" height="146" rx="16" class="card"/>
+  <text x="1064" y="414" class="label teal">BEST CANDIDATE PER CHANNEL</text>
+  <text x="1064" y="451" class="body"><tspan class="red">R</tspan> max → pᵣ  <tspan class="green">G</tspan> max → pᵍ</text>
+  <text x="1064" y="483" class="body"><tspan class="blue">B</tspan> max → pᵦ</text>
+  <text x="1064" y="512" class="small muted">argmax of projection score</text>
+</g>
+<path id="schedule-to-candidate" d="M300 382V365H390V312" class="line"/>
+<g id="stage-schedule">
+  <rect x="56" y="382" width="580" height="146" rx="16" class="card"/>
+  <text x="80" y="414" class="label teal">DEFAULT SEARCH SCHEDULE · table_S1.m</text>
+  <g transform="translate(80 439)">
+    <rect width="156" height="64" rx="10" class="soft"/><text x="14" y="26" class="body">1 · Global</text><text x="14" y="50" class="small muted">5 × 5 × 5 candidates</text>
+    <path d="M160 32H178" class="line"/>
+    <rect x="190" width="158" height="64" rx="10" class="soft"/><text x="204" y="26" class="body">2 · Refine</text><text x="204" y="50" class="small muted">x → z → y · 30 each</text>
+    <path d="M352 32H370" class="line"/>
+    <rect x="382" width="118" height="64" rx="10" class="soft"/><text x="396" y="26" class="body">2 refine rounds</text><text x="396" y="50" class="small muted">90 each · 305 total</text>
+  </g>
+</g>
+<path id="max-to-mean" d="M1190 530V562" class="line"/>
+<g id="channel-mean">
+  <rect x="1040" y="570" width="304" height="84" rx="16" fill="#103b42" stroke="#53dec7" stroke-width="1.5"/>
+  <text x="1064" y="603" class="label teal">COMBINE CHANNEL ESTIMATES</text>
+  <text x="1064" y="636" class="body">p̂ = mean(pᵣ, pᵍ, pᵦ)</text>
+</g>
+<path id="mean-to-coordinate" d="M1040 613H1008" class="line"/>
+<g id="coordinate-conversion">
+  <rect x="682" y="570" width="318" height="84" rx="16" class="card"/>
+  <text x="706" y="603" class="label teal">MANUSCRIPT COORDINATES</text>
+  <text x="706" y="636" class="body">y ← D − y internal  <tspan class="small muted">(D = 1.03 m)</tspan></text>
+</g>
+<path id="coordinate-to-result" d="M840 656V679" class="line"/>
+<g id="recorded-result">
+  <rect x="320" y="687" width="680" height="120" rx="18" fill="#0f202e" stroke="#52718a" stroke-width="1.5"/>
+  <text x="346" y="718" class="label teal">RECORDED CPU RUN · 1 OCT 2026 · NOT A RECONSTRUCTION</text>
+  <text x="346" y="756" class="body">Estimate <tspan font-weight="700">(0.458333, 0.489195, 0.202586) m</tspan></text>
+  <text x="346" y="785" class="body">Measured <tspan font-weight="700">(0.470000, 0.460000, 0.204000) m</tspan><tspan class="teal" font-weight="700">  ·  31.471915 mm apart</tspan></text>
+</g>
+<text x="56" y="830" class="small muted">Raw comparison; no accuracy pass threshold is defined. Source and runtime details: docs/LOCALIZATION_RESULT.md</text>
+</svg>
