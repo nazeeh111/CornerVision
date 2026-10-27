@@ -14,13 +14,13 @@
 % 3. Repeat step 2 with finer grid.
 % -----------------------------------------------------------------------
 
-% Last Modified by $John Murray-Bruce$ at Boston University
+%
 % v1.0 23-Jan-2018 10:31:32
-% v2.0 08-Nov-2018 14:14:57 (Clean-up and commented for sharing -JMB)
+%
 
 % Manuscript:
-%   Saunders, C. and Murray-Bruce, J and Goyal, V.K., 'Computational
-%               Periscopy with and Ordinary Digital Camera', Nature, 2018.
+% Computational Periscopy with an Ordinary Digital Camera.
+% Nature 565, 472-475 (2019); DOI: 10.1038/s41586-018-0868-6.
 
 % Functions
 addpath('Functions')

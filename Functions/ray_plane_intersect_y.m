@@ -4,7 +4,7 @@ function [point] = ray_plane_intersect_y(ray_start, ray_end, plane_point, plane_
 %   ray_end = 3d vector, x,y,z
 %   square_coordinates = x,y,z; x,y,z; x,y,z; x,y,z;
 
-% Charles Saunders at Boston University
+%
 
 ray_direction = ray_end-ray_start;
 ray_direction = ray_direction./norm(ray_direction,2);

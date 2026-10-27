@@ -31,7 +31,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Verify current source (163 original + 2 modified) before MATLAB
+      - name: Verify current source before MATLAB
         run: python3 tests/check_source_manifest.py
 
       - name: Set up base MATLAB R2026a
@@ -53,6 +53,6 @@ jobs:
             if strcmp(mode, 'candidate'), addpath('tests'); localization_candidate; end;
             if strcmp(mode, 'localization'), addpath('tests'); localization_full; end
 
-      - name: Verify current source (163 original + 2 modified) after MATLAB
+      - name: Verify current source after MATLAB
         if: always()
         run: python3 tests/check_source_manifest.py

@@ -9,12 +9,12 @@
 % trimmed mean.
 % -----------------------------------------------------------------------
 
-% Last Modified by Charles Saunders at Boston University
+%
 % 09-Nov-2018 (Clean-up and commented for sharing)
 
 % Manuscript:
-%   Saunders, C. and Murray-Bruce, J and Goyal, V.K., 'Computational
-%               Periscopy with and Ordinary Digital Camera', Nature, 2018.
+% Computational Periscopy with an Ordinary Digital Camera.
+% Nature 565, 472-475 (2019); DOI: 10.1038/s41586-018-0868-6.
 
 %%
 % Functions

@@ -1,5 +1,5 @@
 %% Simulates one monitor block. GPU accelerated.
-%% Charles Saunders at Boston University
+%%
 
 function [image] = simulate_block(wall_mat,wall_point, wall_vector_1, wall_vector_2, wall_normal, walln_points, light_source_pos, occ_corner,MM)
 

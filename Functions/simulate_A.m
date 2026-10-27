@@ -1,5 +1,5 @@
 %% Simulate the A matrix using forward model
-%% Charles Saunders and John Murray-Bruce at Boston University
+%%
 
 function [A] = simulate_A(wallparam, occ_corner, simuParams, Mon_xdiscr, Mon_zdiscr, Monitor_depth)
 %% Simulates the full A matrix. GPU accelerated

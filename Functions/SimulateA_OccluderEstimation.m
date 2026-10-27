@@ -22,13 +22,13 @@ function [ simA, Discr ] = SimulateA_OccluderEstimation(simuParams, downsamp_fac
 %       * simA (N x Ndiscr_mon matrix): The forward model, transport matrix.
 %       * Discr (matrix):               Camera FOV discretization (x,z)-plane on visible wall.
 
-% Last Modified by $John Murray-Bruce$ at Boston University
+%
 % v1.0 11-Oct-2017 11:04: 
-% v2.0 07-Nov-2018 16:34:07 (Clean-up and commented for sharing -JMB)
+%
 
 % Manuscript:
-%   Saunders, C. and Murray-Bruce, J and Goyal, V.K., 'Computational
-%               Periscopy with and Ordinary Digital Camera', Nature, 2018.
+% Computational Periscopy with an Ordinary Digital Camera.
+% Nature 565, 472-475 (2019); DOI: 10.1038/s41586-018-0868-6.
 
 NumBlocks = simuParams.NumBlocks;
 numPixels = simuParams.numPixels;

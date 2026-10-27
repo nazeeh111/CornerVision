@@ -2,7 +2,7 @@
 % performed. Given the experiment test letter, the correct dataset will be
 % loaded for MATLAB processing.
 
-% John Murray-Bruce at Boston University
+%
 
 
 switch TestLetter

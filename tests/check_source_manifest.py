@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify historical source identity and the two explicit derivative corrections."""
+"""Verify historical source identity and explicitly recorded derivative edits."""
 
 import hashlib
 import json
@@ -10,8 +10,8 @@ import sys
 
 MANIFEST_SHA256 = "93171ed8d2ae6e742d1c1d0f2aecbe50b58741a3f8fd0b03f0b11fb23e3093db"
 SOURCE_FILE_COUNT = 165
-MODIFIED_SOURCE_COUNT = 2
-MODIFICATIONS_SHA256 = "018b952b5a8c72b6adff109b45ff18e4ccf7133ce17c79b29aa6c9a097ffcbec"
+MODIFIED_SOURCE_COUNT = 19
+MODIFICATIONS_SHA256 = "6810f20744f6a4d34d1e6e0547e827125aa51ad92a036863fbd4fe2a9db7d06e"
 
 
 def unique_entries(pairs):

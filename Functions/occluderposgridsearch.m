@@ -40,13 +40,13 @@ function [p_est, p_est_rgb, K_vals] = occluderposgridsearch(meas,simuParams,Occ_
 %       * K_vals (II_1 x II_2 x II_3 matrix):	The number of normalized singular vectors
 %                                             larger than sigma_th per candidate position.
 
-% Last Modified by $John Murray-Bruce$ at Boston University
+%
 % v1.0 05-Sep-2017 10:28:32
-% v2.0 11-Nov-2018 14:09:47 (Clean-up and commented for sharing -JMB)
+%
 
 % Manuscript:
-%   Saunders, C. and Murray-Bruce, J and Goyal, V.K., 'Computational
-%               Periscopy with and Ordinary Digital Camera', Nature, 2018.
+% Computational Periscopy with an Ordinary Digital Camera.
+% Nature 565, 472-475 (2019); DOI: 10.1038/s41586-018-0868-6.
 
 
 

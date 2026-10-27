@@ -29,9 +29,9 @@ function [ Image, MonPattern, Wall_discr ] = SimulateForwardModelPerBlock(NumBlo
 %       * MonPattern: Pattern on the monitor (visualizes ActiveBlocks_coord).
 %       * Wall_discr: The [x z] dixretization of visible wall.
 
-% Last Modified by $John Murray-Bruce$ at Boston University.
+%
 % v1.0: 20-Nov-2017 9:13:22
-% v2.0: 07-Nov-2017 4:46:16 (Clean-up and commented for sharing -JMB)
+%
 
 Occ_present = true;
 if isempty(Occluder)
@@ -187,7 +187,7 @@ function [Vx,X1,X2] = ComputeOccluderShadow(x_locs,xx,D_wall,Occl_d,Occ_edges)
 %   Output:
 %       * Vx:           Visibility matrix of the occluder on the visible wall.
 
-% Last Modified by $John Murray-Bruce$ at Boston University
+%
 % v1.0 28-Aug-2017 11:13:11
 % v2.0 07-Nov-2018 17:04:43
 

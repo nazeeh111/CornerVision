@@ -39,7 +39,7 @@ For a source-preservation check with Python 3 only, run from the repository root
 python3 tests/check_source_manifest.py
 ```
 
-This checks the unchanged historical manifest, **163 unchanged original source/data files**, and **2 intentionally modified TV solver files** against a separately pinned [modification record](docs/SOURCE-MODIFICATIONS.json). It does not execute MATLAB or validate a reconstruction. [Correction scope and limits](docs/VERIFICATION.md#tv-solver-corrections-2026-10-23).
+This checks the unchanged historical manifest, **146 unchanged source/data files**, and **19 explicitly recorded source edits** against a separately pinned [modification record](docs/SOURCE-MODIFICATIONS.json). The edits comprise two existing TV solver corrections and permitted author/citation comments. It does not execute MATLAB or validate a reconstruction. [Correction scope and limits](docs/VERIFICATION.md#tv-solver-corrections-2026-10-23).
 
 For the small offline MATLAB check, open MATLAB in the repository root and run:
 
@@ -83,4 +83,4 @@ If an image script fails at `gpuArray`, use the no-GPU entry paths above or a su
 
 [Source provenance and scope](NOTICE).
 
-MIT covers CornerVision's added entry point, tests, documentation and artwork only. No upstream license file was present at the verified source revision; this repository's MIT terms do not grant an additional license for the original research code or measurements.
+MIT covers CornerVision's added entry point, tests, documentation and artwork. Adapted research code is used with permission to use and rebrand without author credit. These MIT terms do not relicense the retained measurements.

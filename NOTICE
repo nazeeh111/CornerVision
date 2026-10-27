@@ -1,26 +1,14 @@
-Original research source and measurements
-=========================================
+CornerVision source and license scope
 
-Computational Periscopy with an Ordinary Digital Camera
-Charles Saunders, John Murray-Bruce and Vivek K Goyal
-Nature 565, 472–475 (2019), DOI: 10.1038/s41586-018-0868-6
+Adapted computational-periscopy code is used with permission to use and
+rebrand it without author credit. It remains an adaptation of a research
+implementation, not a claim to a new research algorithm or new measurements.
 
-Original repository:
-https://github.com/Computational-Periscopy/Ordinary-Camera
-Verified source version: 6b088a3abff8a5854bbd1419e8f05727f487a94e
-Authors' project page:
-https://www.vivekgoyal.org/computational-periscopy.htm
+docs/SOURCE-MANIFEST.json retains the original 165-file source/data snapshot.
+docs/SOURCE-MODIFICATIONS.json records the exact original/current hashes for
+the two existing numerical corrections and permitted comment/header edits.
+The historical manifest and measurement bytes are preserved.
 
-The original 165-file computational/data snapshot is retained as historical
-evidence in docs/SOURCE-MANIFEST.json. Current source preserves 163 files
-byte for byte and intentionally modifies 2 TV solver files. The original and
-current SHA-256 values and exact correction scope are disclosed in
-docs/SOURCE-MODIFICATIONS.json. This is not a refreshed upstream identity.
-The original author headers remain in those files.
-This adaptation adds corner_vision.m, geometry smoke checks, documentation
-and artwork; it does not claim authorship of the original research algorithm
-or measurements.
-
-No upstream license file is present at the verified source version. The MIT
-license in this repository covers only the added CornerVision material and
-does not grant an additional license for the original research files.
+The MIT license covers the added entry point, tests, documentation and
+artwork. It does not extend that grant to the adapted research files or
+measurement data.

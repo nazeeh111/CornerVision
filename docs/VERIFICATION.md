@@ -6,7 +6,7 @@ Tested locally with MATLAB R2026a Update 5 (26.1.0.3346908), using base MATLAB. 
 
 20 ray-plane geometry cases matched both the legacy entry point exactly and an analytical reference within 1e-12. Headers for all 136 bundled MATLAB data files were readable.
 
-[SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) remains the unchanged historical 165-file original snapshot. The current gate verifies 163 original files byte for byte and 2 intentionally modified TV solver files against separately pinned [original/current hashes](SOURCE-MODIFICATIONS.json). This establishes the declared source identities, not scientific replication. New wrappers and smoke checks remain separate. The two numerical corrections are described below.
+[SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) remains the unchanged historical 165-file original snapshot. The current gate verifies 146 original files byte for byte and 19 explicitly modified source files (two existing TV solver corrections plus permitted author/citation comments) against separately pinned [original/current hashes](SOURCE-MODIFICATIONS.json). This establishes the declared source identities, not scientific replication. New wrappers and smoke checks remain separate. The two numerical corrections are described below.
 
 ## Reproduce
 
@@ -20,7 +20,7 @@ The test uses only local synthetic inputs or bundled data. It does not acquire o
 
 ## Hosted checks
 
-The **Verify CornerVision** GitHub Actions workflow runs the smoke check in base MATLAB R2026a on a standard macOS runner. It checks all 165 current file hashes before and after MATLAB runs: 163 against the original snapshot and 2 against the explicit modification record.
+The **Verify CornerVision** GitHub Actions workflow runs the smoke check in base MATLAB R2026a on a standard macOS runner. It checks all 165 current file hashes before and after MATLAB runs: 146 against the original snapshot and 19 against the explicit modification record. The 19 comprise two existing numerical corrections and 17 permitted comment/header edits.
 
 For the separate CPU resource check, run the workflow manually and select `candidate`. This evaluates one full 3969-by-1044 forward matrix at the measured occluder corner, using the original final-stage sampling, followed by the original economy singular-value decomposition and RGB projection norms. It prints a compact JSON result. The calculation has a five-minute step limit; the whole job has a fifteen-minute limit. These limits do not provide an instantaneous memory cap.
 

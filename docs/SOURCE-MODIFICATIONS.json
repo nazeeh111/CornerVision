@@ -3,7 +3,7 @@
   "repository_baseline": "039a01131ab8420b3633c0258aa1f9cc5217f6f9",
   "original_manifest_sha256": "93171ed8d2ae6e742d1c1d0f2aecbe50b58741a3f8fd0b03f0b11fb23e3093db",
   "proposal_sha256": "2c272b8ac67353d39e5fa8b516ee57e638eaf50fcac95a28376727f5b0bae8ff",
-  "scope": "Current derivative source, not a refreshed upstream identity. The original 165-file SOURCE-MANIFEST.json is historical and unchanged; 163 files retain original hashes and these 2 have explicit corrections. No research-result parity or global convergence claim.",
+  "scope": "Current derivative source, not a refreshed upstream identity. The original 165-file SOURCE-MANIFEST.json is unchanged. Numerical corrections remain limited to the two recorded TV solvers; the other recorded edits change permitted author/citation comments only. No new scientific-result parity or global convergence claim.",
   "modified_sources": {
     "Functions/reconstruct_tv.m": {
       "original_sha256": "2b6d12eecceea7c7552ac0a5df5001f95cf2d3712f1a105ae4676d5eacaacf75",
@@ -14,6 +14,91 @@
       "original_sha256": "3b337b6566e5030a59b40ce10673d1bbd52e8af0327a6c2db63e5ce7111bf019",
       "current_sha256": "4ff0b7f19d11690a97adc70f71dab2516038a428f15a5a477d82fed8da6040ff",
       "scope": "Finite zero-cost fixed-point stopping only; documented tolerance/constraint field spelling also corrected in iterative helper."
+    },
+    "fig_S1_S2.m": {
+      "original_sha256": "8ba3a67d8a3930a00857a21c3db1fbf82be2ba42908bcaec677c8a9ed501fed3",
+      "current_sha256": "f24d14edd5c0b95d3ffb7f0a193d4d75980db887ae130b6139ca55517b6e03a4",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig_S14.m": {
+      "original_sha256": "f9de9535030ff623875804f9faa44b02e78d192cdbe359ab90bc7a1bb46a6b96",
+      "current_sha256": "395bc49120871a97598f43b710f1a5ca0b99939e363dddaa45420a270a5f5b2e",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig4_column_e.m": {
+      "original_sha256": "3f491b310ddeaf13cadcc442ab35b19fca33630e7d9a09ff82f15ff9f53de8f9",
+      "current_sha256": "6c9b39e53bd9256f19b5674389f8400a79e7b3de45215f036ce6b0ac2b9b9133",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "table_S1.m": {
+      "original_sha256": "abf822d1bb026df757291d52b8dc64619169b2b1864fb8dce81afcf373236bf2",
+      "current_sha256": "1ed8275ea2433b10a00002b43d6fcc97f44718a974d3a89960558030e8760d9a",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig_S9.m": {
+      "original_sha256": "8d7ee897772fa6c9755519dc6f4b6e355b2dd2664a0aec77c095b6778ad586aa",
+      "current_sha256": "625aa1ab99201c89021b9914f00424d085fda95374efb88a683771df31ca269e",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig4_column_d.m": {
+      "original_sha256": "8757927f932aea6d12ca4d2f4732563f50f5d065999e47152e6dc8520ef0c475",
+      "current_sha256": "87de174f2c5ee94fcd8707a518e87f04a026ecd463785f00c56f2558f7e54b4a",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig_S16.m": {
+      "original_sha256": "123812961d8962f0c5782c89d32e9227474ca09f7c08058f08ba5784624ec4a9",
+      "current_sha256": "43879c1389643fd8301e787145d37bdb4e0fa985ac4ae0c608b25bf59d4b174a",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig4_column_c.m": {
+      "original_sha256": "53dd034b8365b72cea4cbaca83ae4057b67b4334fe3f073580f03484343d6ed3",
+      "current_sha256": "651ae1fe2797b47f8802b25210d29c34f592f47c57d8ba07751432e3c9631c59",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "fig_S15.m": {
+      "original_sha256": "42abe991e0d4976d8024653ef2510abed81462ee5a051fea9fdf6a4b916a05e5",
+      "current_sha256": "11c96ce57be2daaebb2cddce4196d74486112e25ce790c093437c1e939ced04e",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/simulate_A.m": {
+      "original_sha256": "ebb79b154044b72a93036af8c8b102f7093e13eca08c24ccf3e6595d6f612de6",
+      "current_sha256": "557abe76af766c9320e3ff8dc025a7309f97c6fd28c3a220f6cb6873d75e96f7",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/simulate_occluder.m": {
+      "original_sha256": "127b46a84e8eb540f20628b30c6842d9c2978a5ec6154f4fbb4612fe03608d2f",
+      "current_sha256": "14e90dd0b6116b296c0f1c45401001314a0bc2d341370a8dc4cd9eb85c514b57",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/SimulateA_OccluderEstimation.m": {
+      "original_sha256": "8fe0d18dd4d05ae4d6e83ba4e1a902451df2ac6861a695d3a9396d0cd0013b92",
+      "current_sha256": "6a4ad97813b14c3cc19109b2a68248e9d905f09d528bd49a4ebf9438a09e1073",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/SimulateForwardModelPerBlock.m": {
+      "original_sha256": "e78caf366624e62a4b85e98b55382e2314adaa2d1da854e46805b4fccfafe9e5",
+      "current_sha256": "b15cbc59142d04a921e7cce5a597a49b73da265ba92479bdb5f615311da01a72",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/simulate_block.m": {
+      "original_sha256": "4b3ce8d0ab5505ad2f24063755ac98d634fcc5e626675eb3ba2bd2ee0ff804d2",
+      "current_sha256": "78c0441014a6266ac81f69b7bdb5abb6bce366594103cfb84bea9bd12e788cbb",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/load_experiment_config_data_reconstruction.m": {
+      "original_sha256": "41275294f9c48b29b2edfc64e8c38eef7fd6dcdb14aa9e671f2a79087be042b1",
+      "current_sha256": "8b1955f95c1cd9a93b06e38eebdba71f68160366cc201a63d23e3483bff431cc",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/occluderposgridsearch.m": {
+      "original_sha256": "2b6eb32bfc8ae870ffa74c130043bc2ad5aec60d8dc4ab4fd3f809082a004a23",
+      "current_sha256": "db51a600e24ad12685c3db345ab1e43fe403be961790be34c2b56a2dca3043d7",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
+    },
+    "Functions/ray_plane_intersect_y.m": {
+      "original_sha256": "74484a13fba534491bd11272fb54a4f75da6d4dc74d18f567fa80c7211e1ad3e",
+      "current_sha256": "7f78f91d071dad946168b4f822b4882f73facf9dd431006def54799e1a6e1b32",
+      "scope": "Permitted author-header/citation presentation edits only; executable lines and line endings preserved."
     }
   }
 }

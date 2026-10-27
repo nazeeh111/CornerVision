@@ -1,5 +1,5 @@
 %% Generates occluder mask
-%% Charles Saunders at Boston University
+%%
 
 function [ occluder_image ] = simulate_occluder(wall_point, wall_vector_1, wall_vector_2, wall_normal, walln_points, light_source_pos, occ_corner)
 

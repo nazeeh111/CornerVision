@@ -14,4 +14,4 @@ The executed estimate rounds to the source comment's displayed values. Its Eucli
 
 The final y coordinate is `D - y_internal`, with `D = 1.03 m`, exactly as in the original script. The collector checks that conversion and finite estimates for all three stages.
 
-This verifies execution of the original default mushroom localization, not image reconstruction, other scenes, every candidate's intermediate values, hardware accuracy, peak memory or complete paper replication. The algorithm, capture and reference coordinates are from Saunders, Murray-Bruce and Goyal's [original research source](https://github.com/Computational-Periscopy/Ordinary-Camera); [NOTICE](../NOTICE) records attribution and license scope.
+This verifies execution of the original default mushroom localization, not image reconstruction, other scenes, every candidate's intermediate values, hardware accuracy, peak memory or complete paper replication. The algorithm, capture and reference coordinates belong to the retained research baseline; [NOTICE](../NOTICE) records the source and license scope.
